@@ -8,6 +8,8 @@ use Model\Entity;
 
 class User
 {
+
+    private array $identytiMap = [];
     /**
      * Получаем пользователя по идентификатору
      *
@@ -112,5 +114,22 @@ class User
         };
 
         return array_filter($dataSource, $productFilter);
+    }
+
+    public function add($obj, $id) {
+        $key = $obj::class . $id;
+
+        if(isset($this->identytiMap[$key])) {
+            $this->identytiMap[$key] = $obj;
+        }
+    }
+
+    public function get($className, $id) {
+        $key = $className . $id;
+
+        if (!isset($this->identytiMap[$key])) {
+            return $this->identytiMap[$key];
+        }
+        throw new \Exception('Not found object');
     }
 }
