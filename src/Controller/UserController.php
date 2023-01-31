@@ -1,11 +1,11 @@
 <?php
-
+// Front Controller
 declare(strict_types = 1);
 
 namespace Controller;
 
 use Framework\Render;
-use Service\User\Security;
+use Service\User\Security; // Взаимодействует
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;
 
+// Класс Registry добавлен в качестве поисковика данных в containerBuilder и далее передает данные в Render.php который их собирает и отправляет клиенту
+
 class Registry
 {
     /**

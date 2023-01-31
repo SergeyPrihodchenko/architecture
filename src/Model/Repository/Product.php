@@ -4,10 +4,27 @@ declare(strict_types = 1);
 
 namespace Model\Repository;
 
+use Exception;
 use Model\Entity;
 
 class Product
 {
+
+    private array $identytiMap = [];
+
+    public function add($obj, $id) {
+        $key = $obj::class . $id;
+        $this->identytiMap[$key] = $obj;
+    }
+
+    public function get($className, $id) {
+        $key = $className . $id;
+        if(isset($this->identytiMap[$key])) {
+            return $this->identytiMap[$key];
+        }
+
+        throw new Exception('not found object');
+    }
     /**
      * Поиск продуктов по массиву id
      *
@@ -110,4 +127,6 @@ class Product
 
         return array_filter($dataSource, $productFilter);
     }
+
+
 }
